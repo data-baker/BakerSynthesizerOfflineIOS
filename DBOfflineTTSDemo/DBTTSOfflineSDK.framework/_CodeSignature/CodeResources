@@ -4,131 +4,101 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/DBFailureModel.h</key>
+		<key>Headers/DBOfflineSynthesizer.h</key>
 		<data>
-		yYMdEyRKm7/c6xxH966h8k0fclk=
+		fxUOJYsvabGUKl/SvfuFgueRy68=
 		</data>
-		<key>Headers/DBOfflineSynthesizerManager.h</key>
+		<key>Headers/DBSpeechSynthesizerDelegate.h</key>
 		<data>
-		YEe2Zbo5fFGbqJReXDCzQmZBMFw=
+		RyYbXguG2dF+hJA/0NB53DXM8VI=
 		</data>
-		<key>Headers/DBSynthesisPlayer.h</key>
+		<key>Headers/DBSynthesisPlayerDelegate.h</key>
 		<data>
-		xnvFe66Vi7Zr1tWfUwDJ7OZgjI8=
+		cWls6zO6gC8X/w+1tTcAzqXrw7s=
 		</data>
 		<key>Headers/DBSynthesizerDelegate.h</key>
 		<data>
-		ajBeZhnA1F/NJHk7QJITSQBCsGQ=
+		g1jKiX4DGyNIrdkDiskqDQLmZgA=
 		</data>
 		<key>Headers/DBSynthesizerRequestParam.h</key>
 		<data>
-		BlSJf+A1kY35i3/QCvN+W+JIFlY=
+		SHuHk+fX5nJ24TZzrltSzsYAjKs=
 		</data>
 		<key>Headers/DBTTSEnumerate.h</key>
 		<data>
-		woXvn/FZ5jzu/Dkg+3QwUUToSDg=
-		</data>
-		<key>Headers/PCMDataPlayer.h</key>
-		<data>
-		7A3RJMp0wGqh3hlCPginLn7Rpms=
-		</data>
-		<key>Headers/TTSConfig.h</key>
-		<data>
-		8WQ3Et26HhStMgYK0Ixjm4ypt7M=
+		XA3Zq+TPIdpmSK5tWsh8jCDbVq4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5U3GmutzKqdK1Ksa4lVpvyS7kIA=
+		VjwOk6YQyoXUA0TA0nfdusaF+QQ=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/DBFailureModel.h</key>
+		<key>Headers/DBOfflineSynthesizer.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yYMdEyRKm7/c6xxH966h8k0fclk=
+			fxUOJYsvabGUKl/SvfuFgueRy68=
 			</data>
 			<key>hash2</key>
 			<data>
-			QfIJFPwd12afvvwqpKW+cHJ5liYLPM/BPV49ZTQUKbw=
+			sRcdo99+qEKRbJBkp/BgaxCCVrGObPun+NRfWWg9i3I=
 			</data>
 		</dict>
-		<key>Headers/DBOfflineSynthesizerManager.h</key>
+		<key>Headers/DBSpeechSynthesizerDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YEe2Zbo5fFGbqJReXDCzQmZBMFw=
+			RyYbXguG2dF+hJA/0NB53DXM8VI=
 			</data>
 			<key>hash2</key>
 			<data>
-			qeb9PTM8dQiUA8l+gZrP7THwDlAQxJXRMJUDVX35mVg=
+			dbsZDRgN2tyy9iM+BukRKr4ucZLdrt7+r+zsLq2OpkE=
 			</data>
 		</dict>
-		<key>Headers/DBSynthesisPlayer.h</key>
+		<key>Headers/DBSynthesisPlayerDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xnvFe66Vi7Zr1tWfUwDJ7OZgjI8=
+			cWls6zO6gC8X/w+1tTcAzqXrw7s=
 			</data>
 			<key>hash2</key>
 			<data>
-			klVktwmnl10GlmRyW4CYq8/5v29VWeFBKKYsOKz9bRc=
+			qpzGKgjT/1/tiCCh4FQNhdd0BbNE7XJPO0+GUsc9lhw=
 			</data>
 		</dict>
 		<key>Headers/DBSynthesizerDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ajBeZhnA1F/NJHk7QJITSQBCsGQ=
+			g1jKiX4DGyNIrdkDiskqDQLmZgA=
 			</data>
 			<key>hash2</key>
 			<data>
-			YwMiko/CcBIaw39qao0Ei2pWYROkt6GovlUB4Djtkz0=
+			pgWsYpHTkTg7rXtmmEY3p0VLfjOrdMZEXCLkF0Kwrgw=
 			</data>
 		</dict>
 		<key>Headers/DBSynthesizerRequestParam.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BlSJf+A1kY35i3/QCvN+W+JIFlY=
+			SHuHk+fX5nJ24TZzrltSzsYAjKs=
 			</data>
 			<key>hash2</key>
 			<data>
-			Dh5qnaOP1LBd0OKzjeJuvl4R0iGpO36yFQEK9ohQB54=
+			0Q6M/jrujH6eaXdI1/KSOCPayuui167X+T35bQxC/a8=
 			</data>
 		</dict>
 		<key>Headers/DBTTSEnumerate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			woXvn/FZ5jzu/Dkg+3QwUUToSDg=
+			XA3Zq+TPIdpmSK5tWsh8jCDbVq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			gYVD0P4niJNvyWy8b9Q3FZ/lSDh1RN003yRepZNNujc=
-			</data>
-		</dict>
-		<key>Headers/PCMDataPlayer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			7A3RJMp0wGqh3hlCPginLn7Rpms=
-			</data>
-			<key>hash2</key>
-			<data>
-			LyW1ipISsL9DVGMxnFcCUYsyuEuoJTD3SwZHYa+vZik=
-			</data>
-		</dict>
-		<key>Headers/TTSConfig.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			8WQ3Et26HhStMgYK0Ixjm4ypt7M=
-			</data>
-			<key>hash2</key>
-			<data>
-			J/rzQdiB84hyTSLcUNwxDZkZidIsntUicc0A/hoNkmc=
+			4+TCHTWAJqOtrgYF6yjFrkEUGBcoYcbb0WT+hF36EmY=
 			</data>
 		</dict>
 	</dict>

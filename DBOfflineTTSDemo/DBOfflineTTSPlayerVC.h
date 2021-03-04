@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 带播放器的离线合成播放器
 @interface DBOfflineTTSPlayerVC : UIViewController
 
+// YES: 展示播放器 NO: 不展示播放器
+@property(nonatomic,assign)BOOL needPlayer;
+
 @end
 
 NS_ASSUME_NONNULL_END

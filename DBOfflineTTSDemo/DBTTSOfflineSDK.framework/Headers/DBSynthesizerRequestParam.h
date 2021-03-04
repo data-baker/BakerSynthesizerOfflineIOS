@@ -16,9 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 根据接口获取到的token
 @property(nonatomic,copy)NSString * token;
 
-/// 设置发音人声音名称，默认：标准合成_模仿儿童_果子
-@property(nonatomic,copy)NSString * voice;
-
 /// 设置要转为语音的合成文本
 @property(nonatomic,copy)NSString * text;
 
@@ -31,7 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置语音的音量，在0～9之间（只支持整型值），不传时默认值为5
 @property(nonatomic,copy)NSString * volume;
 
-/// 设置发音人
+/// 在线发音人设置，离线的不需要设置通过路径加载即可：设置发音人声音名称，默认：标准合成_模仿儿童_果子
+
 @property(nonatomic,copy)NSString * speaker;
 
 /// 设置语音的音调，取值0-9，不传时默认为5中语调
@@ -42,7 +40,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///  根据类型指定audioType
 @property(nonatomic,assign)DBTTSAudioType audioType;
 
-@property(nonatomic,copy)NSString * offlineSpeakTypeDataPath;
+//@property(nonatomic,copy)NSString * offlineSpeakTypeDataPath;
+
+/// 前端文件路径
+//@property(nonatomic,copy)NSString * textDatFilePath;
+
+/// 后端文件路径
+//@property(nonatomic,copy)NSString * speechDatFilePath;
 
 
 @end

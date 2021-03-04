@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3509576A25EE224F00D2E37C /* SliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576825EE224F00D2E37C /* SliderTableViewCell.m */; };
+		3509576B25EE224F00D2E37C /* DBTTSSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576925EE224F00D2E37C /* DBTTSSettingTableViewController.m */; };
+		3509576F25EE22BA00D2E37C /* TTSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576D25EE22BA00D2E37C /* TTSConfig.m */; };
+		3509577625EE248B00D2E37C /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */; };
 		3575048A24558462002E6EB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3575048924558462002E6EB9 /* AppDelegate.m */; };
-		3575048D24558462002E6EB9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3575048C24558462002E6EB9 /* SceneDelegate.m */; };
 		3575049524558466002E6EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3575049424558466002E6EB9 /* Assets.xcassets */; };
 		3575049824558466002E6EB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3575049624558466002E6EB9 /* LaunchScreen.storyboard */; };
 		3575049B24558466002E6EB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3575049A24558466002E6EB9 /* main.m */; };
@@ -26,17 +29,20 @@
 		35B915EE24668C9200374D8A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915E924668C9200374D8A /* MBProgressHUD.m */; };
 		35B915EF24668C9200374D8A /* XCHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915EA24668C9200374D8A /* XCHudHelper.m */; };
 		35B915F024668C9200374D8A /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915ED24668C9200374D8A /* UIView+Toast.m */; };
-		35B915F924668D4600374D8A /* DBOfflineTTSNormalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915F724668D4600374D8A /* DBOfflineTTSNormalVC.m */; };
 		35B915FA24668D4600374D8A /* DBOfflineTTSPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915F824668D4600374D8A /* DBOfflineTTSPlayerVC.m */; };
-		35B915FC2466A65D00374D8A /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B915FB2466A65D00374D8A /* DBTTSOfflineSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3509576625EE224F00D2E37C /* SliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderTableViewCell.h; sourceTree = "<group>"; };
+		3509576725EE224F00D2E37C /* DBTTSSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTTSSettingTableViewController.h; sourceTree = "<group>"; };
+		3509576825EE224F00D2E37C /* SliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderTableViewCell.m; sourceTree = "<group>"; };
+		3509576925EE224F00D2E37C /* DBTTSSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTTSSettingTableViewController.m; sourceTree = "<group>"; };
+		3509576D25EE22BA00D2E37C /* TTSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSConfig.m; sourceTree = "<group>"; };
+		3509576E25EE22BA00D2E37C /* TTSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSConfig.h; sourceTree = "<group>"; };
+		3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 		3575048524558462002E6EB9 /* 标贝离线合成.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "标贝离线合成.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3575048824558462002E6EB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3575048924558462002E6EB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3575048B24558462002E6EB9 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		3575048C24558462002E6EB9 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		3575049424558466002E6EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3575049724558466002E6EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3575049924558466002E6EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,11 +68,8 @@
 		35B915EB24668C9200374D8A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		35B915EC24668C9200374D8A /* XCHudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCHudHelper.h; sourceTree = "<group>"; };
 		35B915ED24668C9200374D8A /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
-		35B915F524668D4600374D8A /* DBOfflineTTSNormalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOfflineTTSNormalVC.h; sourceTree = "<group>"; };
 		35B915F624668D4600374D8A /* DBOfflineTTSPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOfflineTTSPlayerVC.h; sourceTree = "<group>"; };
-		35B915F724668D4600374D8A /* DBOfflineTTSNormalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOfflineTTSNormalVC.m; sourceTree = "<group>"; };
 		35B915F824668D4600374D8A /* DBOfflineTTSPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOfflineTTSPlayerVC.m; sourceTree = "<group>"; };
-		35B915FB2466A65D00374D8A /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3575050224568B79002E6EB9 /* libc++.tbd in Frameworks */,
-				35B915FC2466A65D00374D8A /* DBTTSOfflineSDK.framework in Frameworks */,
+				3509577625EE248B00D2E37C /* DBTTSOfflineSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,17 +108,19 @@
 				3575050924568EF3002E6EB9 /* 标贝离线合成.entitlements */,
 				3575048824558462002E6EB9 /* AppDelegate.h */,
 				3575048924558462002E6EB9 /* AppDelegate.m */,
-				3575048B24558462002E6EB9 /* SceneDelegate.h */,
-				3575048C24558462002E6EB9 /* SceneDelegate.m */,
 				35B915E024668C5300374D8A /* DBLoginVC.h */,
 				35B915DF24668C5300374D8A /* DBLoginVC.m */,
 				35B915E124668C5300374D8A /* ViewController.h */,
 				35B915DE24668C5300374D8A /* ViewController.m */,
-				35B915F524668D4600374D8A /* DBOfflineTTSNormalVC.h */,
-				35B915F724668D4600374D8A /* DBOfflineTTSNormalVC.m */,
 				35B915F624668D4600374D8A /* DBOfflineTTSPlayerVC.h */,
 				35B915F824668D4600374D8A /* DBOfflineTTSPlayerVC.m */,
-				35B915FB2466A65D00374D8A /* DBTTSOfflineSDK.framework */,
+				3509576725EE224F00D2E37C /* DBTTSSettingTableViewController.h */,
+				3509576925EE224F00D2E37C /* DBTTSSettingTableViewController.m */,
+				3509576625EE224F00D2E37C /* SliderTableViewCell.h */,
+				3509576825EE224F00D2E37C /* SliderTableViewCell.m */,
+				3509576E25EE22BA00D2E37C /* TTSConfig.h */,
+				3509576D25EE22BA00D2E37C /* TTSConfig.m */,
+				3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */,
 				35B915E624668C9200374D8A /* thirdLib */,
 				357504C42456895A002E6EB9 /* dataResource */,
 				357504CE2456895A002E6EB9 /* DBNetwork */,
@@ -260,12 +265,13 @@
 				357504F02456895B002E6EB9 /* DBNetworkHelper.m in Sources */,
 				35B915EE24668C9200374D8A /* MBProgressHUD.m in Sources */,
 				35B915F024668C9200374D8A /* UIView+Toast.m in Sources */,
+				3509576F25EE22BA00D2E37C /* TTSConfig.m in Sources */,
 				3575049B24558466002E6EB9 /* main.m in Sources */,
 				35B915E324668C5300374D8A /* DBLoginVC.m in Sources */,
+				3509576A25EE224F00D2E37C /* SliderTableViewCell.m in Sources */,
 				35B915FA24668D4600374D8A /* DBOfflineTTSPlayerVC.m in Sources */,
-				35B915F924668D4600374D8A /* DBOfflineTTSNormalVC.m in Sources */,
 				35B915EF24668C9200374D8A /* XCHudHelper.m in Sources */,
-				3575048D24558462002E6EB9 /* SceneDelegate.m in Sources */,
+				3509576B25EE224F00D2E37C /* DBTTSSettingTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

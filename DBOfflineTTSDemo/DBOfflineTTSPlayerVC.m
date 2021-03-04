@@ -8,97 +8,85 @@
 
 #import "DBOfflineTTSPlayerVC.h"
 #import <AVFoundation/AVFoundation.h>
-#import <DBTTSOfflineSDK/DBOfflineSynthesizerManager.h>
-#import <DBTTSOfflineSDK/DBSynthesisPlayer.h>
-#import <DBTTSOfflineSDK/TTSConfig.h>
+#import <DBTTSOfflineSDK/DBOfflineSynthesizer.h>
+#import "TTSConfig.h"
+#import "DBTTSSettingTableViewController.h"
 
-static NSString *  textViewText = @"语音编码指语音数据存储和传输的方式。请注意，语音编码和语音文件格式不同。例如常见声道是指声音在录制时在不同空间位置采集的相互独立的音频信号，所以声道数也就是声音录制时的音源数量。常见的音频数据为单声道或双声道音频采样率是指录音设备在一秒钟内对声音信号的采样次数，采样频率越高声音的还原就越真实越自然；调用语音识别服务时，您需要设置采样率参数。参数数值，您的语音数据和项目配置三者必须一致，否则识别效果会非常差。如果您的语音数据采样率高于16000Hz，需要先把采样率转换为16000Hz才能发送给语音识别服务。如果您的语音数据采样率是8000Hz的，请不要把采样率转换为16000Hz，应该在项目中选用支持8000Hz采样率的模型语音编码指语音数据存储和传输的方式。请注意，语音编码和语音文件格式不同。例如常见声道是指声音在录制时在不同空间位置采集的相互独立的音频信号，所以声道数也就是声音录制时的音源数量。常见的音频数据为单声道或双声道音频采样率是指录音设备在一秒钟内对声音信号的采样次数，采样频率越高声音的还原就越真实越自然；调用语音识别服务时，您需要设置采样率参数。参数数值，您的语音数据和项目配置三者必须一致，否则识别效果会非常差。如果您的语音数据采样率高于16000Hz，需要先把采样率转换为16000Hz才能发送给语音识别服务。如果您的语音数据采样率是8000Hz的，请不要把采样率转换为16000Hz，应该在项目中选用支持8000Hz采样率的模型";
 
-//NSString * textViewText = @"近期，天津市宝坻区某百货大楼内部，相继出现了5例新型冠状病毒感染的肺炎病例。";
+//static NSString *  textViewText = @"语音编码指语音数据存储和传输的方式。";
 
-@interface DBOfflineTTSPlayerVC ()<DBSynthesisPlayerDelegate,UITextViewDelegate>
+static NSString * textViewText = @"标贝（北京）科技有限公司专注于智能语音交互，包括语音合成整体解决方案，并提供语音合成、语音识别、图像识别等人工智能数据服务 。帮助客户实现数据价值，以推动技术、应用和产业的创新  。帮助企业盘活大数据资源，挖掘数据中有价值的信息。主要提供智能语音交互相关服务，包括语音合成整体解决方案，以及语音合成、语音识别、图像识别等人工智能数据服务。标贝科技在范围内有数据采集、处理团队，可以满足在不同地区收集数据的需求。以语音数据为例，可采集、加工普通话、英语、粤语、日语、韩语及方言等各类数据，以支持客户进行语音合成或者语音识别系统的研发工作 。";
+
+@interface DBOfflineTTSPlayerVC ()<DBSynthesisPlayerDelegate,DBSynthesizerDelegate,DBSynthesizerSettingDelegate,UITextViewDelegate>
 /// 合成管理类
-@property(nonatomic,strong)DBOfflineSynthesizerManager * synthesizerManager;
+@property(nonatomic,strong)DBOfflineSynthesizer * synthesizerManager;
 /// 合成需要的参数
 @property(nonatomic,strong)DBSynthesizerRequestParam * synthesizerPara;
 /// 展示文本的textView
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property(nonatomic,strong)NSMutableString * textString;
-
-/// 播放器设置
-@property(nonatomic,strong)DBSynthesisPlayer * synthesisDataPlayer;
 
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 /// 展示回调状态
-@property (weak, nonatomic) IBOutlet UITextView *displayTextView;
-@property (weak, nonatomic) IBOutlet UIView *voiceView;
-@property(nonatomic,strong)NSDictionary * voiceDictionary;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property(nonatomic,copy)NSDictionary * voiceDictionary;
+@property(nonatomic,copy)NSArray * voiceArray;
+@property(nonatomic,strong)NSString * offlineSpeaker;
 @property(nonatomic,strong)UIButton * lastSlectedButton;
+@property (weak, nonatomic) IBOutlet UILabel *synthesizerStateLabel;
+
+@property(nonatomic,strong)NSThread * syntheProgressThread;
+
+@property (strong, nonatomic) IBOutlet UILabel *playStatusLabel;
+
+@property(nonatomic,assign)CGFloat  totalData;
 
 @end
 
 @implementation DBOfflineTTSPlayerVC
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.synthesizerManager refreshAuthoreInfoIfNeed];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self closeAction:nil];
+    [self stopAction];
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.textString = [textViewText mutableCopy];
-    self.displayTextView.text = @"";
+    self.playStatusLabel.text = @"";
+    if (!self.needPlayer) {
+        self.playButton.hidden = YES;
+        self.playStatusLabel.text = @"";
+        self.playStatusLabel.hidden = YES;
+        self.totalData = 0;
+    }
+    
     [self addBorderOfView:self.textView];
-    [self addBorderOfView:self.displayTextView];
     self.textView.text = textViewText;
-    
-    
+   self.voiceArray = @[@"标准女声",@"甜美女声",@"标准男声",@"磁性男声",@"小君儿童"];
+    self.voiceDictionary = @{@"标准女声":tts_back_ch_standard, @"甜美女声":tts_back_ch_hts_sweet, @"标准男声":tts_back_ch_standard_male_voice, @"磁性男声":tts_back_ch_magnetic_male_voice, @"小君儿童":tts_back_ch_xiaojun};
+    _synthesizerManager = [DBOfflineSynthesizer instance];
+    _synthesizerManager.delegate = self;
+    _synthesizerManager.playerDelegate = self;
+    self.offlineSpeaker = self.voiceArray[1];
+    [self setupSpeechDataModel:self.voiceDictionary[self.offlineSpeaker]];
     if (!_synthesizerPara) {
         _synthesizerPara = [[DBSynthesizerRequestParam alloc]init];
     }
-    
-    self.voiceDictionary = @{@"标准女声":tts_back_ch_standard, @"甜美女声":tts_back_ch_hts_sweet, @"标准男声":tts_back_ch_standard_male_voice, @"磁性男声":tts_back_ch_magnetic_male_voice, @"小君儿童":tts_back_ch_xiaojun};
-    [self configureView:self.voiceView addVoiceNameButtonWithArray:self.voiceDictionary.allKeys];
-    _synthesizerManager = [DBOfflineSynthesizerManager instance];
+    _synthesizerManager.bufferDataLenght = 200;
     //设置打印日志
      _synthesizerManager.log = YES;
-    // 设置播放器
-    _synthesisDataPlayer = [[DBSynthesisPlayer alloc]init];
-    _synthesisDataPlayer.delegate = self;
-    // 将初始化的播放器给合成器持有，合成器会持有并回调数据给player
-    self.synthesizerManager.synthesisDataPlayer = self.synthesisDataPlayer;
-    
 }
 
-
-- (void)configureView:(UIView *)voiceNameView addVoiceNameButtonWithArray:(NSArray *)array {
-    
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-        if (idx == 0) {
-            self.lastSlectedButton = button;
-            self.lastSlectedButton.selected = YES;
-            self.synthesizerPara.speaker = [self.voiceDictionary objectForKey:array[idx]];
-        }
-        
-        CGFloat space = 15;
-        CGFloat margin = 30;
-        NSInteger maskCols =4;
-        NSInteger rows = (idx) / maskCols;
-        NSInteger cols = idx % maskCols;
-        CGFloat availableSpace = self.view.frame.size.width - margin*2 - (cols -1)*space;
-        CGFloat width = availableSpace/maskCols;
-        CGFloat  height = 20;
-        button.frame = CGRectMake(margin + (width +space)* cols, rows*(space + height), width, height);
-        [button setTitle:array[idx] forState:UIControlStateNormal];
-        button.tag = 100+idx;
-        [button addTarget:self action:@selector(handleSelcetVoiceAction:) forControlEvents:UIControlEventTouchUpInside];
-        [voiceNameView addSubview:button];
-    }];
+- (void)setupSpeechDataModel:(NSString *)speakerName {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"tts_entry_1.0.0_release_front_chn_eng_arm_18121801" ofType:@"dat"];
+    NSString *speechName = [speakerName componentsSeparatedByString:@"."].firstObject;
+    NSString *speechPath = [[NSBundle mainBundle] pathForResource:speechName ofType:@"dat"];
+    [_synthesizerManager setDataPath:path speechPath:speechPath];
 }
+
 
 - (void)handleSelcetVoiceAction:(UIButton *)sender {
     if (self.lastSlectedButton == sender) {
@@ -107,107 +95,125 @@ static NSString *  textViewText = @"语音编码指语音数据存储和传输�
         self.lastSlectedButton.selected = NO;
         self.lastSlectedButton = sender;
     }
-    [self closeAction:nil];
+    [self stopAction];
     sender.selected = !sender.isSelected;
     NSString *voice = sender.titleLabel.text;
-    self.synthesizerPara.speaker = self.voiceDictionary[voice];
+    NSString *offlineVoice = self.voiceDictionary[voice];
+    [self setupSpeechDataModel:offlineVoice];
+
 }
 // MARK: IBActions
 
 - (IBAction)startAction:(UIButton* )sender {
-    sender.enabled = NO;
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-         sender.enabled = YES;
-     });
-    // 先清除之前的数据
-    [self resetPlayState];
-    self.displayTextView.text = @"";
-    _synthesizerPara.audioType = DBTTSAudioTypePCM16K;
-    _synthesizerPara.text = self.textView.text;
-    // 设置合成参数
-    NSInteger code = [self.synthesizerManager setSynthesizerParams:self.synthesizerPara];
-    if (code == 0) {
-        // 开始合成
-        [self.synthesizerManager start];
+    if (sender.isSelected == NO) {
+        [self startAction];
+    }else {
+        [self stopAction];
     }
 }
-- (IBAction)closeAction:(id)sender {
+- (void)startAction {
+    // 先清除之前的数据
+    [self resetPlayState];
+    _synthesizerPara.audioType = DBTTSAudioTypePCM16K;
+    _synthesizerPara.speaker = @"Jingjing";
+    _synthesizerPara.text = self.textView.text;
+    _synthesizerPara.language = DBlanguageTypezh;
+    // 设置合成参数
+    NSInteger code = [self.synthesizerManager setSynthesizerParams:self.synthesizerPara];
+    if (code != 0) {// 开始合成
+        NSLog(@"设置参数错误：%@",@(code));
+    }
+    [self.synthesizerManager startPlayISNeedSpeaker:self.needPlayer];
+    self.startButton.selected = YES;
+}
+
+
+- (void)stopAction {
     [self.synthesizerManager stop];
     [self resetPlayState];
-    self.displayTextView.text = @"";
+    [self resetSyntheLabelState];
+    
+    if (![self.syntheProgressThread isCancelled]) {
+        [self.syntheProgressThread cancel];
+    }
+    self.startButton.selected = NO;
 
 }
+
 ///  重置播放器播放控制状态
 - (void)resetPlayState {
     if (self.playButton.isSelected) {
         self.playButton.selected = NO;
     }
-    [self.synthesisDataPlayer stopPlay];
+    if (!self.needPlayer) {
+        self.totalData = 0.f;
+    }
+    self.playStatusLabel.text = @"";
 }
 
 - (IBAction)playAction:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    if (self.synthesisDataPlayer.isReadyToPlay && self.synthesisDataPlayer.isPlayerPlaying == NO) {
-        [self.synthesisDataPlayer startPlay];
-    }else {
-        [self.synthesisDataPlayer pausePlay];
+
+    if (self.startButton.isSelected == NO) { // 如果未开启播放，点击无效
+        return;
     }
-}
-- (IBAction)currentPlayPosition:(id)sender {
-    NSString *position = [NSString stringWithFormat:@"播放进度 %@",[self timeDataWithTimeCount:self.synthesisDataPlayer.currentPlayPosition]];
-    [self appendLogMessage:position];
-}
-- (IBAction)getAudioLength:(id)sender {
-    NSString *audioLength = [NSString stringWithFormat:@"音频数据总长度 %@",[self timeDataWithTimeCount:self.synthesisDataPlayer.audioLength]];
-    [self appendLogMessage:audioLength];
+    
+    sender.selected = !sender.isSelected;
+    if (sender.isSelected) {
+        [self.synthesizerManager resume];
+    }else {
+        [self.synthesizerManager pause];
+    }
 }
 - (IBAction)playState:(id)sender {
     NSString *message;
-    if (self.synthesisDataPlayer.isPlayerPlaying) {
+    if (self.synthesizerManager.isPlayerPlaying) {
         message = @"正在播放";
     }else {
         message = @"播放暂停";
     }
     [self appendLogMessage:message];
+    
 }
-
-//
 
 - (void)onSynthesisCompleted {
 //    [self appendLogMessage:@"合成完成"];
+    if (!self.needPlayer) {
+        [self appendLogMessage:@"合成完成"];
+        self.startButton.selected = NO;
+    }
+    NSLog(@"%s",__func__);
+
 }
 
 - (void)onSynthesisStarted {
-//    [self appendLogMessage:@"开始合成"];
+ // [self appendLogMessage:@"开始合成"];
+    NSLog(@"%s",__func__);
 
 }
 - (void)onBinaryReceivedData:(NSData *)data audioType:(DBTTSAudioType)audioType interval:(NSString *)interval endFlag:(BOOL)endFlag {
-//    [self appendLogMessage:[NSString stringWithFormat:@"收到合成回调的数据"]];
-}
-
-- (void)onTaskFailed:(DBFailureModel *)failreModel  {
-    NSLog(@"失败 %@",failreModel);
-    [self appendLogMessage:[NSString stringWithFormat:@"失败 %@",failreModel.message]];
-}
-
-
-
-//MARK:  UITextViewDelegate
-
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:textViewText]&&textView == self.textView) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
+    
+    if (endFlag) {
+        [self appendLogMessage:[NSString stringWithFormat:@"合成完成"]];
+    }
+    
+    if (!self.needPlayer) {
+        [self appendLogMessage:[NSString stringWithFormat:@"合成中..."]];
+        self.totalData += data.length/1024.f;
+        self.synthesizerStateLabel.text = [NSString stringWithFormat:@" 共合成数据:%.1fKB",self.totalData];
     }
 }
 
+- (void)onTaskFailed:(NSError *)error  {
+    NSLog(@"失败 %@",error.description);
+    [self appendLogMessage:[NSString stringWithFormat:@"失败 %@",error.description]];
+    NSLog(@"%s",__func__);
+}
+
+//MARK:  UITextViewDelegate
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (self.textView.isFirstResponder) {
         [self.textView resignFirstResponder];
-    }
-    if (self.displayTextView.isFirstResponder) {
-        [self.displayTextView resignFirstResponder];
     }
 }
 
@@ -215,36 +221,49 @@ static NSString *  textViewText = @"语音编码指语音数据存储和传输�
 
 - (void)readlyToPlay {
     [self appendLogMessage:@"准备就绪"];
-    [self playAction:self.playButton];
+    NSLog(@"%s",__func__);
 }
 
 - (void)playFinished {
     [self appendLogMessage:@"播放结束"];
+    [self resetSyntheLabelState];
     [self resetPlayState];
     self.playButton.selected = NO;
+    self.startButton.selected = NO;
+    NSLog(@"%s",__func__);
 }
 
 - (void)playPausedIfNeed {
     self.playButton.selected = NO;
     [self appendLogMessage:@"暂停"];
-
+    NSLog(@"%s",__func__);
 }
 
 - (void)playResumeIfNeed  {
     self.playButton.selected = YES;
     [self appendLogMessage:@"播放"];
+    NSLog(@"%s",__func__);
 }
 
-- (void)updateBufferPositon:(float)bufferPosition {
-    static NSInteger count = 0;
-    count++;
-    if (count == 10) {
-        [self appendLogMessage:[NSString stringWithFormat:@"缓存进度 %.0f%%",bufferPosition*100]];
-        count=0;
+- (void)playerNeedSynthesizerText:(NSInteger)textCount playerCanBuffer:(NSInteger)bufferLength {
+    self.synthesizerStateLabel.text = [NSString stringWithFormat:@"待合成文本段数：%@  待播放buffer:%@KB",@(textCount),@(bufferLength)];
+    NSLog(@"%s",__func__);
+}
+- (void)resetSyntheLabelState {
+    if (self.needPlayer) {
+        self.synthesizerStateLabel.text = [NSString stringWithFormat:@"待合成文本段数：%@  待播放buffer:%@KB",@(0),@(0)];
     }
-
+    
 }
 
+// MARK: DBSynthesizerSettingDelegate --
+
+- (void)updateOfflineSpeaker:(NSString *)offlineSpeaker {
+    NSString *offlineVoice = self.voiceDictionary[offlineSpeaker];
+    self.offlineSpeaker = offlineSpeaker;
+    [self setupSpeechDataModel:offlineVoice];
+    NSLog(@"选中了发音人：%@",offlineSpeaker);
+}
 
 // MARK: Private Methods
 
@@ -254,42 +273,17 @@ static NSString *  textViewText = @"语音编码指语音数据存储和传输�
     view.layer.masksToBounds =  YES;
 }
 
-
-- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
-    if (jsonString == nil) {
-        return nil;
-    }
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
-    
-    if(err) {
-        NSLog(@"json解析失败：%@",err);
-        return nil;
-    }
-    return dic;
-}
-
-- (NSString *)timeDataWithTimeCount:(CGFloat)timeCount {
-    long audioCurrent = ceil(timeCount);
-    NSString *str = nil;
-    if (audioCurrent < 3600) {
-        str =  [NSString stringWithFormat:@"%02li:%02li",lround(floor(audioCurrent/60.f)),lround(floor(audioCurrent/1.f))%60];
-    } else {
-        str =  [NSString stringWithFormat:@"%02li:%02li:%02li",lround(floor(audioCurrent/3600.f)),lround(floor(audioCurrent%3600)/60.f),lround(floor(audioCurrent/1.f))%60];
-    }
-    return str;
-    
-}
-
 - (void)appendLogMessage:(NSString *)message {
-    NSString *text = self.displayTextView.text;
-    NSString *appendText = [text stringByAppendingString:[NSString stringWithFormat:@"\n%@",message]];
-    self.displayTextView.text = appendText;
-    [self.displayTextView scrollRangeToVisible:NSMakeRange(self.displayTextView.text.length, 1)];
+    self.playStatusLabel.hidden = NO;
+    self.playStatusLabel.text = message;
 }
 
-
+// MARK: Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DBTTSSettingTableViewController *desVC = [segue destinationViewController];
+    desVC.synthesizerPara = self.synthesizerPara;
+    desVC.settingDelegate = self;
+    desVC.offLineSpeaker = self.offlineSpeaker;
+    desVC.voiceArray = self.voiceArray;
+}
 @end

@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "DBTTSEnumerate.h"
-#import "DBFailureModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol DBSynthesizerDelegate <NSObject>
-@required
+
+@optional
 /// 开始合成
 - (void)onSynthesisStarted;
 
@@ -27,14 +27,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// 当onBinaryReceived方法中endFlag参数=1，即最后一条消息返回后，会回调此方法。
 - (void)onSynthesisCompleted;
 
-@optional
 
 /// 合成的第一帧的数据已经得到l，可以在此开启播放功能；
 - (void)onPrepared;
 
 /// 合成失败 返回msg内容格式为：{"code":40000,"message":"…","trace_id":" 1572234229176271"}
-- (void)onTaskFailed:(DBFailureModel *)failreModel;
+- (void)onTaskFailed:(NSError *)failreModel;
+
 
 @end
+
+
+
 
 NS_ASSUME_NONNULL_END

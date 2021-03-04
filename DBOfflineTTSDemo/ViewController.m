@@ -7,10 +7,14 @@
 //
 
 #import "ViewController.h"
-#import <DBTTSOfflineSDK/DBOfflineSynthesizerManager.h>
+#import <DBTTSOfflineSDK/DBOfflineSynthesizer.h>
 #import "UIView+Toast.h"
 #import "DBLoginVC.h"
-@interface ViewController ()
+#import "XCHudHelper.h"
+#import "DBOfflineTTSPlayerVC.h"
+
+
+@interface ViewController ()<DBSynthesizerDelegate>
 @end
 
 @implementation ViewController
@@ -23,11 +27,17 @@
     if (!clientSecret || !clientId) {
         [self showLoginVC];
     }else {
-        [[DBOfflineSynthesizerManager instance] setupClientId:clientId clientSecret:clientSecret successHandler:^{
-            NSLog(@"初始化SDK成功");
-        } failureHander:^(DBFailureModel * _Nonnull error) {
-            [self showLoginVC];
-    }];
+        
+        // MARK: 需授权成功后才能调用SDK
+        MBProgressHUD * hudView = [[XCHudHelper sharedInstance] showHudOnView:self.view caption:@"请求授权中" image:nil acitivity:YES autoHideTime:0];
+        [[DBOfflineSynthesizer instance] setupClientId:clientId clientSecret:clientSecret messageHander:^(NSInteger ret, NSString * _Nonnull message) {
+            [hudView hideAnimated:YES];
+            if (ret != 0) {
+                [self showLoginVC];
+            }else {
+                NSLog(@"授权成功");
+            }
+        }];
 }
 }
 
@@ -43,6 +53,20 @@
 //- (void)onErrorCode:(NSInteger)errorCode errorMsg:(NSString *)errorMsg {
 //    [self.view makeToast:[NSString stringWithFormat:@"%@:%@",@(errorCode),errorMsg] duration:2 position:CSToastPositionCenter];
 //}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    DBOfflineTTSPlayerVC * seg = [segue destinationViewController];
+    UIButton *button = (UIButton *)sender;
+    if (button.tag == 101) {
+        seg.needPlayer = YES;
+    }else {
+        seg.needPlayer = NO;
+    }
+    seg.title = button.titleLabel.text;
+}
+
 
 
 

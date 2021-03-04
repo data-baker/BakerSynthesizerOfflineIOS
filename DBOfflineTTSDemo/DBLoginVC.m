@@ -9,12 +9,12 @@
 #import "DBLoginVC.h"
 #import "UIView+Toast.h"
 #import "XCHudHelper.h"
-#import <DBTTSOfflineSDK/DBOfflineSynthesizerManager.h>
+#import <DBTTSOfflineSDK/DBOfflineSynthesizer.h>
 
 @interface DBLoginVC ()
 @property (weak, nonatomic) IBOutlet UITextField *clientIdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *clientSecretTextField;
-@property(nonatomic,strong)DBOfflineSynthesizerManager * synthesizerManager;
+@property(nonatomic,strong)DBOfflineSynthesizer * synthesizerManager;
 
 @end
 
@@ -38,23 +38,25 @@
     }
     NSString *clientId = [self.clientIdTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *clientSecret = [self.clientSecretTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    _synthesizerManager = [DBOfflineSynthesizerManager instance];
+    _synthesizerManager = [DBOfflineSynthesizer instance];
     //设置打印日志
     _synthesizerManager.log = YES;
     
  MBProgressHUD * hudView = [[XCHudHelper sharedInstance] showHudOnView:self.view caption:@"" image:nil acitivity:YES autoHideTime:0];
-    [_synthesizerManager setupClientId:clientId clientSecret:clientSecret successHandler:^{
-        [hudView hideAnimated:YES];
-        [[NSUserDefaults standardUserDefaults]setObject:clientId forKey:clientIdKey];
-        [[NSUserDefaults standardUserDefaults]setObject:clientSecret forKey:clientSecretKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"获取token成功");
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } failureHander:^(DBFailureModel * _Nonnull error) {
-        [hudView hideAnimated:YES];
-        NSLog(@"获取token失败:%@",error);
-        NSString *msg = [NSString stringWithFormat:@"获取token失败:%@",error.description];
-        [self.view makeToast:msg duration:2 position:CSToastPositionCenter];
+    [_synthesizerManager setupClientId:clientId clientSecret:clientSecret messageHander:^(NSInteger ret, NSString * _Nonnull message) {
+        if (ret == 0) {
+            [hudView hideAnimated:YES];
+            [[NSUserDefaults standardUserDefaults]setObject:clientId forKey:clientIdKey];
+            [[NSUserDefaults standardUserDefaults]setObject:clientSecret forKey:clientSecretKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"获取token成功");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else {
+            [hudView hideAnimated:YES];
+            NSLog(@"获取token失败:%@",message);
+            NSString *msg = [NSString stringWithFormat:@"获取token失败:%@",message];
+            [self.view makeToast:msg duration:2 position:CSToastPositionCenter];
+        }
     }];
 }
 

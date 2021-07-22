@@ -10,7 +10,6 @@
 		3509576A25EE224F00D2E37C /* SliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576825EE224F00D2E37C /* SliderTableViewCell.m */; };
 		3509576B25EE224F00D2E37C /* DBTTSSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576925EE224F00D2E37C /* DBTTSSettingTableViewController.m */; };
 		3509576F25EE22BA00D2E37C /* TTSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3509576D25EE22BA00D2E37C /* TTSConfig.m */; };
-		3509577625EE248B00D2E37C /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */; };
 		3575048A24558462002E6EB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3575048924558462002E6EB9 /* AppDelegate.m */; };
 		3575049524558466002E6EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3575049424558466002E6EB9 /* Assets.xcassets */; };
 		3575049824558466002E6EB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3575049624558466002E6EB9 /* LaunchScreen.storyboard */; };
@@ -21,8 +20,8 @@
 		357504EB2456895A002E6EB9 /* tts_back_ch_xiaojun.dat in Resources */ = {isa = PBXBuildFile; fileRef = 357504C82456895A002E6EB9 /* tts_back_ch_xiaojun.dat */; };
 		357504EC2456895A002E6EB9 /* tts_back_ch_hts_sweet.dat in Resources */ = {isa = PBXBuildFile; fileRef = 357504C92456895A002E6EB9 /* tts_back_ch_hts_sweet.dat */; };
 		357504EE2456895B002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat in Resources */ = {isa = PBXBuildFile; fileRef = 357504CB2456895A002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat */; };
-		357504F02456895B002E6EB9 /* DBNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 357504D02456895A002E6EB9 /* DBNetworkHelper.m */; };
 		3575050224568B79002E6EB9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3575050124568B79002E6EB9 /* libc++.tbd */; };
+		357E95D026A94D5100A789E2 /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */; };
 		35B915E224668C5300374D8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915DE24668C5300374D8A /* ViewController.m */; };
 		35B915E324668C5300374D8A /* DBLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915DF24668C5300374D8A /* DBLoginVC.m */; };
 		35B915E524668C7400374D8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B915E424668C7300374D8A /* Main.storyboard */; };
@@ -39,7 +38,6 @@
 		3509576925EE224F00D2E37C /* DBTTSSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTTSSettingTableViewController.m; sourceTree = "<group>"; };
 		3509576D25EE22BA00D2E37C /* TTSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSConfig.m; sourceTree = "<group>"; };
 		3509576E25EE22BA00D2E37C /* TTSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSConfig.h; sourceTree = "<group>"; };
-		3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 		3575048524558462002E6EB9 /* 标贝离线合成.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "标贝离线合成.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3575048824558462002E6EB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3575048924558462002E6EB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,10 +51,9 @@
 		357504C82456895A002E6EB9 /* tts_back_ch_xiaojun.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = tts_back_ch_xiaojun.dat; sourceTree = "<group>"; };
 		357504C92456895A002E6EB9 /* tts_back_ch_hts_sweet.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = tts_back_ch_hts_sweet.dat; sourceTree = "<group>"; };
 		357504CB2456895A002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat; sourceTree = "<group>"; };
-		357504CF2456895A002E6EB9 /* DBNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBNetworkHelper.h; sourceTree = "<group>"; };
-		357504D02456895A002E6EB9 /* DBNetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBNetworkHelper.m; sourceTree = "<group>"; };
 		3575050124568B79002E6EB9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3575050924568EF3002E6EB9 /* 标贝离线合成.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "标贝离线合成.entitlements"; sourceTree = "<group>"; };
+		357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 		35B915DE24668C5300374D8A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		35B915DF24668C5300374D8A /* DBLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLoginVC.m; sourceTree = "<group>"; };
 		35B915E024668C5300374D8A /* DBLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLoginVC.h; sourceTree = "<group>"; };
@@ -78,7 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3575050224568B79002E6EB9 /* libc++.tbd in Frameworks */,
-				3509577625EE248B00D2E37C /* DBTTSOfflineSDK.framework in Frameworks */,
+				357E95D026A94D5100A789E2 /* DBTTSOfflineSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +102,7 @@
 		3575048724558462002E6EB9 /* DBOfflineTTSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */,
 				3575050924568EF3002E6EB9 /* 标贝离线合成.entitlements */,
 				3575048824558462002E6EB9 /* AppDelegate.h */,
 				3575048924558462002E6EB9 /* AppDelegate.m */,
@@ -120,10 +118,8 @@
 				3509576825EE224F00D2E37C /* SliderTableViewCell.m */,
 				3509576E25EE22BA00D2E37C /* TTSConfig.h */,
 				3509576D25EE22BA00D2E37C /* TTSConfig.m */,
-				3509577525EE248B00D2E37C /* DBTTSOfflineSDK.framework */,
 				35B915E624668C9200374D8A /* thirdLib */,
 				357504C42456895A002E6EB9 /* dataResource */,
-				357504CE2456895A002E6EB9 /* DBNetwork */,
 				357504CB2456895A002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat */,
 				3575049424558466002E6EB9 /* Assets.xcassets */,
 				35B915E424668C7300374D8A /* Main.storyboard */,
@@ -144,15 +140,6 @@
 				357504C92456895A002E6EB9 /* tts_back_ch_hts_sweet.dat */,
 			);
 			path = dataResource;
-			sourceTree = "<group>";
-		};
-		357504CE2456895A002E6EB9 /* DBNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				357504CF2456895A002E6EB9 /* DBNetworkHelper.h */,
-				357504D02456895A002E6EB9 /* DBNetworkHelper.m */,
-			);
-			path = DBNetwork;
 			sourceTree = "<group>";
 		};
 		3575050024568B79002E6EB9 /* Frameworks */ = {
@@ -262,7 +249,6 @@
 			files = (
 				35B915E224668C5300374D8A /* ViewController.m in Sources */,
 				3575048A24558462002E6EB9 /* AppDelegate.m in Sources */,
-				357504F02456895B002E6EB9 /* DBNetworkHelper.m in Sources */,
 				35B915EE24668C9200374D8A /* MBProgressHUD.m in Sources */,
 				35B915F024668C9200374D8A /* UIView+Toast.m in Sources */,
 				3509576F25EE22BA00D2E37C /* TTSConfig.m in Sources */,
@@ -339,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -391,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -409,6 +395,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DBOfflineTTSDemo",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DBOfflineTTSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -433,6 +420,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DBOfflineTTSDemo",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DBOfflineTTSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

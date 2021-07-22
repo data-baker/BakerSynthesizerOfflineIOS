@@ -12,6 +12,7 @@
 #import <DBTTSOfflineSDK/DBOfflineSynthesizer.h>
 
 @interface DBLoginVC ()
+
 @property (weak, nonatomic) IBOutlet UITextField *clientIdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *clientSecretTextField;
 @property(nonatomic,strong)DBOfflineSynthesizer * synthesizerManager;
@@ -23,8 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // MARK: 测试
-//    self.clientIdTextField.text = @"e2d17fce-f69a-4b78-bbe5-7fef824a77c2";
-//    self.clientSecretTextField.text = @"ZTZlOTMyMzAtMThlZS00M2ZjLWJhMTktYTQ2NjBhZTE3Yzk0";
+
 }
 - (IBAction)loginAction:(id)sender {
     

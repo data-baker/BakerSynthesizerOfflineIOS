@@ -27,7 +27,6 @@
     if (!clientSecret || !clientId) {
         [self showLoginVC];
     }else {
-        
         // MARK: 需授权成功后才能调用SDK
         MBProgressHUD * hudView = [[XCHudHelper sharedInstance] showHudOnView:self.view caption:@"请求授权中" image:nil acitivity:YES autoHideTime:0];
         [[DBOfflineSynthesizer instance] setupClientId:clientId clientSecret:clientSecret messageHander:^(NSInteger ret, NSString * _Nonnull message) {

@@ -43,6 +43,7 @@ static NSString * textViewText = @"标贝（北京）科技有限公司专注于
 @end
 
 @implementation DBOfflineTTSPlayerVC
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }

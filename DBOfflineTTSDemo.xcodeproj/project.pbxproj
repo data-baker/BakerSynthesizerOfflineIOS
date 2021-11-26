@@ -21,7 +21,6 @@
 		357504EC2456895A002E6EB9 /* tts_back_ch_hts_sweet.dat in Resources */ = {isa = PBXBuildFile; fileRef = 357504C92456895A002E6EB9 /* tts_back_ch_hts_sweet.dat */; };
 		357504EE2456895B002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat in Resources */ = {isa = PBXBuildFile; fileRef = 357504CB2456895A002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat */; };
 		3575050224568B79002E6EB9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3575050124568B79002E6EB9 /* libc++.tbd */; };
-		357E95D026A94D5100A789E2 /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */; };
 		35B915E224668C5300374D8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915DE24668C5300374D8A /* ViewController.m */; };
 		35B915E324668C5300374D8A /* DBLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915DF24668C5300374D8A /* DBLoginVC.m */; };
 		35B915E524668C7400374D8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B915E424668C7300374D8A /* Main.storyboard */; };
@@ -29,6 +28,7 @@
 		35B915EF24668C9200374D8A /* XCHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915EA24668C9200374D8A /* XCHudHelper.m */; };
 		35B915F024668C9200374D8A /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915ED24668C9200374D8A /* UIView+Toast.m */; };
 		35B915FA24668D4600374D8A /* DBOfflineTTSPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B915F824668D4600374D8A /* DBOfflineTTSPlayerVC.m */; };
+		35C56E5F2750F53D006EE09E /* DBTTSOfflineSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C56E5E2750F53D006EE09E /* DBTTSOfflineSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,6 @@
 		357504CB2456895A002E6EB9 /* tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = tts_entry_1.0.0_release_front_chn_eng_arm_18121801.dat; sourceTree = "<group>"; };
 		3575050124568B79002E6EB9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3575050924568EF3002E6EB9 /* 标贝离线合成.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "标贝离线合成.entitlements"; sourceTree = "<group>"; };
-		357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 		35B915DE24668C5300374D8A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		35B915DF24668C5300374D8A /* DBLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLoginVC.m; sourceTree = "<group>"; };
 		35B915E024668C5300374D8A /* DBLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLoginVC.h; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		35B915ED24668C9200374D8A /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		35B915F624668D4600374D8A /* DBOfflineTTSPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOfflineTTSPlayerVC.h; sourceTree = "<group>"; };
 		35B915F824668D4600374D8A /* DBOfflineTTSPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOfflineTTSPlayerVC.m; sourceTree = "<group>"; };
+		35C56E5E2750F53D006EE09E /* DBTTSOfflineSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBTTSOfflineSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3575050224568B79002E6EB9 /* libc++.tbd in Frameworks */,
-				357E95D026A94D5100A789E2 /* DBTTSOfflineSDK.framework in Frameworks */,
+				35C56E5F2750F53D006EE09E /* DBTTSOfflineSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +102,7 @@
 		3575048724558462002E6EB9 /* DBOfflineTTSDemo */ = {
 			isa = PBXGroup;
 			children = (
-				357E95CF26A94D5100A789E2 /* DBTTSOfflineSDK.framework */,
+				35C56E5E2750F53D006EE09E /* DBTTSOfflineSDK.framework */,
 				3575050924568EF3002E6EB9 /* 标贝离线合成.entitlements */,
 				3575048824558462002E6EB9 /* AppDelegate.h */,
 				3575048924558462002E6EB9 /* AppDelegate.m */,

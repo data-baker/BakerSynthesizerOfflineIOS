@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // MARK: 测试
 
 }
 - (IBAction)loginAction:(id)sender {

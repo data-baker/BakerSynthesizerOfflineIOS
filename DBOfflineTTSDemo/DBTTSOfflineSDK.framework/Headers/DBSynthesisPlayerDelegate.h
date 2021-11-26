@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 播放暂停回调
 - (void)playPausedIfNeed;
 
-
 /// 播放失败回调
 /// @param error 失败信息
 - (void)playerCallBackFaiure:(NSError *)error;

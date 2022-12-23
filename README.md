@@ -1,2 +1,0 @@
-# BakerSynthesizerOfflineIOS
-IOS offline  synthesizer
